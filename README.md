@@ -1,4 +1,4 @@
 A simple full-stack login page
 
-FE: JS + React  
+FE: React  
 BE: Node + Express + PassportJs + SQlite

@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Im
 import './index.css';
 import App from './App.jsx';
 import HomePage from './HomePage'; // Assicurati di avere una pagina per il reindirizzamento
-
+import AboutPage from './AboutPage'; // Importa la pagina Chi siamo
+import ContactPage from './ContactPage'; // Importa la pagina Contattaci
 // Avvio dell'applicazione
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -12,6 +13,8 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} /> {/* Pagina di login */}
         <Route path="/home" element={<HomePage />} /> {/* Pagina di destinazione dopo il login */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   </StrictMode>

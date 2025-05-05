@@ -6,9 +6,12 @@ import App from './App.jsx';
 import HomePage from './HomePage'; // Assicurati di avere una pagina per il reindirizzamento
 import AboutPage from './AboutPage'; // Importa la pagina Chi siamo
 import ContactPage from './ContactPage'; // Importa la pagina Contattaci
+import { ThemeProvider } from './ThemeContext'; // assicurati del path corretto
+
 // Avvio dell'applicazione
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ThemeProvider>
     <Router> {/* Utilizzo di BrowserRouter per gestire la navigazione */}
       <Routes>
         <Route path="/" element={<App />} /> {/* Pagina di login */}
@@ -17,5 +20,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
+    </ThemeProvider>
   </StrictMode>
 );

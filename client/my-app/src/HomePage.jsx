@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './HomePage.css'; // Importa il file CSS per la HomePage
 import image from './assets/image.png'; // Importa l'immagine
 import { Link, useNavigate } from 'react-router-dom';
-
+import { useTheme } from './ThemeContext';
 
 function HomePage() {
   const navigate = useNavigate();
   const [counter, setCounter] = useState(0);
+  const { darkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const fetchCounter = async () => {
@@ -43,10 +44,15 @@ function HomePage() {
     }
   };
   return (
+    
     <div className="home-container">
       <div className="header-bar">
-        <button className="logout-button" onClick={handleLogout}>Logout</button>
-      </div>
+      <button className="theme-button" onClick={toggleTheme}>
+        {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+      </button>
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
+    </div>
+
 
       <img src={image} alt="Immagine decorativa" />
 

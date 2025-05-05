@@ -28,7 +28,7 @@ nav {
 }
 
 button {
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem .5rem;
   background-color: #00796b;
   color: white;
   border: none;
@@ -72,3 +72,43 @@ img {
 .logout-button:hover {
   background-color: #d32f2f;
 }
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.theme-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.logout-button {
+  background-color: #ff6666;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark-mode button {
+  background-color: #333;
+  color: white;
+}
+
+.counter-section {
+  padding: 0.8rem .5rem;
+  color: black; /* o qualunque colore fisso tu voglia */
+}
+

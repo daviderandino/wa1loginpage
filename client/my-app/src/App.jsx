@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Importa useNavigate
 
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
+  const navigate = useNavigate();  // Inizializza useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ function App() {
 
     if (res.ok) {
       setMsg("Login effettuato!");
+      navigate('/home');  // Reindirizza a /home se login è riuscito
     } else {
       setMsg("Email o password errati.");
     }

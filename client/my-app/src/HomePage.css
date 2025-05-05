@@ -1,0 +1,35 @@
+.homepage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f8ff;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .content {
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    color: #666;
+  }
+  
+  .image-container {
+    margin-top: 20px;
+  }
+  
+  .home-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  

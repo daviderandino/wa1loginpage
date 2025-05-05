@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 
-const password = 'mypassword123';
+const password = 'admin123';
 bcrypt.hash(password, 10, (err, hashedPassword) => {
   if (err) throw err;
   console.log('Hash della password:', hashedPassword);
 });
 
-// $2b$10$h8flpTjW6Me5B1.JsGEZUe8v36wz6XCc03CQipw6yD//WSQd7vW7m
+// $2b$10$NtBb9HgwTcO5lNPmN7cNqel85pY9N84ejSgDlWzIxdX2yVScgE3ba

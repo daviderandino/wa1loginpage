@@ -16,6 +16,13 @@ app.use(cors({
     credentials: true
   }));
 
+  // Middleware per verificare se l'utente è autenticato
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.status(401).json({ error: "Non autenticato" });
+}
+
+
 
 app.use(session({
   secret: 'secret123',
@@ -59,3 +66,32 @@ app.get('/me', (req, res) => {
 app.listen(4000, () => {
   console.log('Server avviato su http://localhost:4000');
 });
+
+app.post('/logout', (req, res) => {
+  req.logout(err => {
+    if (err) return res.status(500).json({ message: 'Errore durante il logout' });
+    req.session.destroy(); // opzionale: distrugge anche la sessione lato server
+    res.clearCookie('connect.sid'); // opzionale: rimuove il cookie di sessione
+    res.status(200).json({ message: 'Logout effettuato' });
+  });
+});
+
+// Ottieni il contatore dell'utente loggato
+app.get('/counter', isAuthenticated, (req, res) => {
+  db.get("SELECT counter FROM users WHERE id = ?", [req.user.id], (err, row) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ counter: row.counter });
+  });
+});
+
+// Incrementa il contatore
+app.post('/counter', isAuthenticated, (req, res) => {
+  db.run("UPDATE users SET counter = counter + 1 WHERE id = ?", [req.user.id], function(err) {
+    if (err) return res.status(500).json({ error: err.message });
+    db.get("SELECT counter FROM users WHERE id = ?", [req.user.id], (err, row) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ counter: row.counter });
+    });
+  });
+});
+

@@ -24,6 +24,11 @@ function App() {
     }
   };
 
+  function isAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.status(401).json({ error: "Non autenticato" });
+  }
+
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit}>
